@@ -13,5 +13,10 @@
             Start = start;
             End = end;
         }
+        public override bool Equals(object? obj)
+        {
+            Event o = obj as Event;
+            return this.Id==o.Id&&DateTime.Equals(this.Start,o.Start)&&DateTime.Equals(o.End,this.End)&&String.Equals(o.Title,this.Title);
+        }
     }
 }

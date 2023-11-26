@@ -9,7 +9,7 @@ namespace Events_brachi_fishof.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        public static List<Event> Events { get; set; } = new List<Event>()  {new Event( 1, "do homework", new DateTime(2023, 11, 26), new DateTime(2023, 11, 27) ), new Event(2, "some thing", new DateTime(2023, 12, 26), new DateTime(2023, 12, 27)), new Event(3, "big", new DateTime(2023, 12, 07), new DateTime(2023, 12, 10)) };
+        public static List<Event> Events = new List<Event>()  {new Event( 1, "do homework", new DateTime(2023, 11, 26), new DateTime(2023, 11, 27) ), new Event(2, "some thing", new DateTime(2023, 12, 26), new DateTime(2023, 12, 27)), new Event(3, "big", new DateTime(2023, 12, 07), new DateTime(2023, 12, 10)) };
         // GET: api/<EventsController>
         [HttpGet]
         public IEnumerable<Event> Get()
@@ -19,12 +19,12 @@ namespace Events_brachi_fishof.Controllers
 
         // GET api/<EventsController>/5
         [HttpGet("{id}")]
-        public ActionResult<Event> Get(int id)
+        public ActionResult Get(int id)
         {
             Event ev = Events.Find(e => e.Id == id);
             if (ev == null)
                 return NotFound();
-            return ev;
+            return Ok(ev);
         }
 
         // POST api/<EventsController>
